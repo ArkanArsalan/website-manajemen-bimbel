@@ -40,8 +40,8 @@
                                 echo "<td>" . $siswa['kelas'] . "</td>";
 
                                 echo "<td class='text-center'>";
-                                echo "<a class='btn btn-info btn-xs' href='form-edit.php?id=" . $siswa['id_siswa'] . "' ><span class='glyphicon glyphicon-edit'></span>Edit</a> | ";
-                                echo "<a class='btn btn-danger btn-xs' href='hapus.php?id=" . $siswa['id_siswa'] . "'><span class='glyphicon glyphicon-remove'></span>Hapus</a>";
+                                echo "<a class='btn btn-info btn-xs' href='edit-siswa.php?id=" . $siswa['id_siswa'] . "' ><span class='glyphicon glyphicon-edit'></span>Edit</a> | ";
+                                echo "<a class='btn btn-danger btn-xs' href='app-siswa.php?id=" . $siswa['id_siswa'] . "'><span class='glyphicon glyphicon-remove'></span>Hapus</a>";
                                 echo "</td>";
 
                                 echo "</tr>";
