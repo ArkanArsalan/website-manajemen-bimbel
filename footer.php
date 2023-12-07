@@ -1,3 +1,4 @@
+<div class="content">
 </div>
 <script>
     function toggleSidebar() {

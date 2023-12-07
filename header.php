@@ -25,3 +25,4 @@
       </ul>
       <button class="logout-btn">Logout</button>
     </div>
+    <div class="content">
