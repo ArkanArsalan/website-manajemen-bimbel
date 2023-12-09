@@ -32,6 +32,18 @@
                         ?>
                     </select>
                 </div>
+                <div class="form-group col-md-3">
+                    <label for="jenjang">Jenjang Sekolah</label>
+                    <select name="jenjang" class="form-control">
+                        <option value="">-- Pilih Jenjang --</option>
+                        <?php
+                            $jenjangQuery = mysqli_query($db, "SELECT DISTINCT jenjang_sekolah FROM siswa");
+                            while ($row = mysqli_fetch_assoc($jenjangQuery)) {
+                                echo "<option value='" . $row['jenjang_sekolah'] . "'>" . $row['jenjang_sekolah'] . "</option>";
+                            }
+                        ?>
+                    </select>
+                </div>
                 <div class="form-group col-md-2">
                     <button type="submit" class="btn btn-primary" style="margin-top: 32px;">Filter</button>
                 </div>
@@ -58,13 +70,16 @@
 
                 <tbody>
                     <?php
-                        // Filter logic based on form submission
-                        $filterSql = "SELECT * FROM siswa";
+                        $filterSql = "SELECT * FROM siswa WHERE 1";
+                        
                         if (isset($_POST['cabang']) && $_POST['cabang'] !== "") {
-                            $filterSql .= " WHERE cabang_bimbel = '" . $_POST['cabang'] . "'";
+                            $filterSql .= " AND cabang_bimbel = '" . $_POST['cabang'] . "'";
                         }
                         if (isset($_POST['kelas']) && $_POST['kelas'] !== "") {
-                            $filterSql .= (strpos($filterSql, 'WHERE') !== false) ? " AND kelas = '" . $_POST['kelas'] . "'" : " WHERE kelas = '" . $_POST['kelas'] . "'";
+                            $filterSql .= " AND kelas = '" . $_POST['kelas'] . "'";
+                        }
+                        if (isset($_POST['jenjang']) && $_POST['jenjang'] !== "") {
+                            $filterSql .= " AND jenjang_sekolah = '" . $_POST['jenjang'] . "'";
                         }
 
                         $filterQuery = mysqli_query($db, $filterSql);
