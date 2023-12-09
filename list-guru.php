@@ -25,11 +25,11 @@
                 <tbody>
                     <?php
                         // Fetch and display details of teachers and the subjects they teach
-                        $guruQuery = mysqli_query($db, "SELECT guru.id_guru, guru.nama, guru.umur, guru.alamat, guru.no_telp, guru.email, guru.jenis_kelamin, GROUP_CONCAT(mata_pelajaran.nama_mp SEPARATOR ', ') AS mata_pelajaran
+                        $guruQuery = mysqli_query($db, "SELECT guru.id_guru, guru.nama, guru.umur, guru.alamat, guru.no_telp, guru.email, guru.jenis_kelamin, guru.cabang_bimbel, GROUP_CONCAT(mata_pelajaran.nama_mp SEPARATOR ', ') AS mata_pelajaran
                                                         FROM guru
                                                         LEFT JOIN guru_mengajar ON guru.id_guru = guru_mengajar.id_guru
                                                         LEFT JOIN mata_pelajaran ON guru_mengajar.id_mp = mata_pelajaran.id_mp
-                                                        GROUP BY guru.id_guru");
+                                                        GROUP BY guru.id_guru;");
 
                         while ($guru = mysqli_fetch_array($guruQuery)) {
                             echo "<tr>";
@@ -40,6 +40,7 @@
                             echo "<td>" . $guru['no_telp'] . "</td>";
                             echo "<td>" . $guru['email'] . "</td>";
                             echo "<td>" . $guru['jenis_kelamin'] . "</td>";
+                            echo "<td>" . $guru['cabang_bimbel'] . "</td>"; 
                             echo "<td>" . $guru['mata_pelajaran'] . "</td>";
                             echo "<td class='text-center'>";
                             echo "<a class='btn btn-info btn-xs' href='edit-guru.php?id=" . $guru['id_guru'] . "' ><span class='glyphicon glyphicon-edit'></span>Edit</a> | ";

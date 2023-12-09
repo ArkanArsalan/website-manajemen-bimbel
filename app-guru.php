@@ -9,31 +9,31 @@
         $email = $_POST['email'];
         $jenis_kelamin = $_POST['jenis_kelamin'];
         $mata_pelajaran = isset($_POST['mata_pelajaran']) ? $_POST['mata_pelajaran'] : array();
-
+        $cabang_bimbel = $_POST['cabang_bimbel']; 
+    
         // Insert into guru table
-        $sqlGuru = "INSERT INTO guru (nama, umur, alamat, no_telp, email, jenis_kelamin) VALUES ('$nama', '$umur', '$alamat', '$no_telp', '$email', '$jenis_kelamin')";
+        $sqlGuru = "INSERT INTO guru (nama, umur, alamat, no_telp, email, jenis_kelamin, cabang_bimbel) VALUES ('$nama', '$umur', '$alamat', '$no_telp', '$email', '$jenis_kelamin', '$cabang_bimbel')";
         $queryGuru = mysqli_query($db, $sqlGuru);
-
+    
         if ($queryGuru) {
             $id_guru = mysqli_insert_id($db);
-
+    
             // Insert into guru_mengajar table
             foreach ($mata_pelajaran as $id_mp) {
                 $sqlGuruMengajar = "INSERT INTO guru_mengajar (id_guru, id_mp) VALUES ('$id_guru', '$id_mp')";
                 $queryGuruMengajar = mysqli_query($db, $sqlGuruMengajar);
-
+    
                 if (!$queryGuruMengajar) {
-                    // Handle error, you may choose to rollback the guru insertion
                     header('Location: list-guru.php?status=gagal');
                     exit();
                 }
             }
-
+    
             header('Location: list-guru.php?status=sukses');
         } else {
             header('Location: list-guru.php?status=gagal');
         }
-    } 
+    }    
     else if (isset($_POST['edit'])) {
         $id = $_POST['id'];
         $nama = $_POST['nama'];
@@ -43,21 +43,22 @@
         $email = $_POST['email'];
         $jenis_kelamin = $_POST['jenis_kelamin'];
         $mata_pelajaran = $_POST['mata_pelajaran'];
-
+        $cabang_bimbel = $_POST['cabang_bimbel']; // Assuming 'cabang_bimbel' is a required field
+    
         // Update guru details
-        $sqlUpdateGuru = "UPDATE guru SET nama='$nama', umur='$umur', alamat='$alamat', no_telp='$no_telp', email='$email', jenis_kelamin='$jenis_kelamin' WHERE id_guru=$id";
+        $sqlUpdateGuru = "UPDATE guru SET nama='$nama', umur='$umur', alamat='$alamat', no_telp='$no_telp', email='$email', jenis_kelamin='$jenis_kelamin', cabang_bimbel='$cabang_bimbel' WHERE id_guru=$id";
         $queryUpdateGuru = mysqli_query($db, $sqlUpdateGuru);
-
+    
         // Remove existing guru assignments
         $sqlDeleteAssignments = "DELETE FROM guru_mengajar WHERE id_guru=$id";
         $queryDeleteAssignments = mysqli_query($db, $sqlDeleteAssignments);
-
+    
         // Insert new guru assignments
         foreach ($mata_pelajaran as $mp) {
             $sqlInsertAssignment = "INSERT INTO guru_mengajar (id_guru, id_mp) VALUES ($id, $mp)";
             $queryInsertAssignment = mysqli_query($db, $sqlInsertAssignment);
         }
-
+    
         if ($queryUpdateGuru && $queryDeleteAssignments) {
             header('Location: list-guru.php?status=success');
         } else {

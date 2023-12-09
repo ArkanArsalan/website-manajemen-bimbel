@@ -31,6 +31,10 @@
                 <input type="email" name="email" placeholder="Email" class="form-control" required>
             </div>
             <div class="form-group">
+                <label for="cabang_bimbel">Cabang Bimbel</label>
+                <input type="text" name="cabang_bimbel" placeholder="Cabang Bimbel" class="form-control" required>
+            </div>
+            <div class="form-group">
                 <label for="mata_pelajaran">Mata Pelajaran yang Diajar</label>
                 <?php
                     $mataPelajaranQuery = mysqli_query($db, "SELECT * FROM mata_pelajaran");
