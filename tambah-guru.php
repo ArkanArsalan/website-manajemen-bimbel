@@ -32,15 +32,15 @@
             </div>
             <div class="form-group">
                 <label for="mata_pelajaran">Mata Pelajaran yang Diajar</label>
-                <select name="mata_pelajaran[]" class="form-control" multiple>
-                    <!-- Fetch and display mata pelajaran from the database -->
-                    <?php
-                        $mataPelajaranQuery = mysqli_query($db, "SELECT * FROM mata_pelajaran");
-                        while ($mataPelajaran = mysqli_fetch_assoc($mataPelajaranQuery)) {
-                            echo "<option value='" . $mataPelajaran['id_mp'] . "'>" . $mataPelajaran['nama_mp'] . "</option>";
-                        }
-                    ?>
-                </select>
+                <?php
+                    $mataPelajaranQuery = mysqli_query($db, "SELECT * FROM mata_pelajaran");
+                    while ($mataPelajaran = mysqli_fetch_assoc($mataPelajaranQuery)) {
+                        echo "<div class='form-check'>";
+                        echo "<input type='checkbox' class='form-check-input' name='mata_pelajaran[]' value='" . $mataPelajaran['id_mp'] . "'>";
+                        echo "<label class='form-check-label' style='font-weight: normal; margin-left: 5px;'>" . $mataPelajaran['nama_mp'] . "</label>";
+                        echo "</div>";
+                    }
+                ?>
             </div>
             <button name="daftar" type="submit" class="btn btn-primary">Tambah</button>
         </form>
