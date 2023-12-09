@@ -24,7 +24,7 @@
                 <tbody>
                     <?php
                         // Fetch and display details of teachers and the subjects they teach
-                        $guruQuery = mysqli_query($db, "SELECT guru.id_guru, guru.nama, guru.umur, guru.alamat, guru.no_telp, guru.email, guru.jenis_kelamin, GROUP_CONCAT(CONCAT(mata_pelajaran.nama_mp, ' ', mata_pelajaran.jenjang_sekolah) SEPARATOR ', ') AS mata_pelajaran
+                        $guruQuery = mysqli_query($db, "SELECT guru.id_guru, guru.nama, guru.umur, guru.alamat, guru.no_telp, guru.email, guru.jenis_kelamin, GROUP_CONCAT(mata_pelajaran.nama_mp SEPARATOR ', ') AS mata_pelajaran
                                                         FROM guru
                                                         LEFT JOIN guru_mengajar ON guru.id_guru = guru_mengajar.id_guru
                                                         LEFT JOIN mata_pelajaran ON guru_mengajar.id_mp = mata_pelajaran.id_mp
@@ -46,6 +46,9 @@
                 </tbody>
             </table>
             <p style="font-weight: bolder">Total : <?php echo mysqli_num_rows($guruQuery) ?></p>
+            <p style="text-align: right; margin:15px">
+                <a href="tambah-guru.php" class="btn btn-primary btn-xs col-md-3">Tambah Baru</a>
+            </p>
         </div>
     </div>
 </div>
