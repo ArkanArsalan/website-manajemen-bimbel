@@ -34,6 +34,36 @@
             header('Location: list-guru.php?status=gagal');
         }
     } 
+    else if (isset($_POST['edit'])) {
+        $id = $_POST['id'];
+        $nama = $_POST['nama'];
+        $umur = $_POST['umur'];
+        $alamat = $_POST['alamat'];
+        $no_telp = $_POST['no_telp'];
+        $email = $_POST['email'];
+        $jenis_kelamin = $_POST['jenis_kelamin'];
+        $mata_pelajaran = $_POST['mata_pelajaran'];
+
+        // Update guru details
+        $sqlUpdateGuru = "UPDATE guru SET nama='$nama', umur='$umur', alamat='$alamat', no_telp='$no_telp', email='$email', jenis_kelamin='$jenis_kelamin' WHERE id_guru=$id";
+        $queryUpdateGuru = mysqli_query($db, $sqlUpdateGuru);
+
+        // Remove existing guru assignments
+        $sqlDeleteAssignments = "DELETE FROM guru_mengajar WHERE id_guru=$id";
+        $queryDeleteAssignments = mysqli_query($db, $sqlDeleteAssignments);
+
+        // Insert new guru assignments
+        foreach ($mata_pelajaran as $mp) {
+            $sqlInsertAssignment = "INSERT INTO guru_mengajar (id_guru, id_mp) VALUES ($id, $mp)";
+            $queryInsertAssignment = mysqli_query($db, $sqlInsertAssignment);
+        }
+
+        if ($queryUpdateGuru && $queryDeleteAssignments) {
+            header('Location: list-guru.php?status=success');
+        } else {
+            header('Location: list-guru.php?status=failure');
+        }
+    }
     else if (isset($_GET['id'])) {
         $id = $_GET['id'];
         $deleteGuruMengajar = mysqli_query($db, "DELETE FROM guru_mengajar WHERE id_guru=$id");

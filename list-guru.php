@@ -17,7 +17,8 @@
                         <th>No Telp</th>
                         <th>Email</th>
                         <th>Jenis Kelamin</th>
-                        <th>Mata Pelajaran Mengajar</th>
+                        <th>Mata Pelajaran</th>
+                        <th>Tindakan</th>
                     </tr>
                 </thead>
 
@@ -41,6 +42,7 @@
                             echo "<td>" . $guru['jenis_kelamin'] . "</td>";
                             echo "<td>" . $guru['mata_pelajaran'] . "</td>";
                             echo "<td class='text-center'>";
+                            echo "<a class='btn btn-info btn-xs' href='edit-guru.php?id=" . $guru['id_guru'] . "' ><span class='glyphicon glyphicon-edit'></span>Edit</a> | ";
                             echo "<a class='btn btn-danger btn-xs' href='app-guru.php?id=" . $guru['id_guru'] . "'><span class='glyphicon glyphicon-remove'></span>Hapus</a>";
                             echo "</td>";
                             echo "</tr>";
