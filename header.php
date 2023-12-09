@@ -20,7 +20,8 @@
       <ul class="nav-list">
         <li><a href="index.php">Home</a></li>
         <li><a href="list-siswa.php">List Siswa</a></li>
-        <li><a href="#">Jadwal Bimbingan</a></li>
+        <li><a href="list-guru.php">List Guru</a></li>
+        <li><a href="#"></a></li>
         <li><a href="#">Materi Pelajaran</a></li>
       </ul>
       <button class="logout-btn">Logout</button>
