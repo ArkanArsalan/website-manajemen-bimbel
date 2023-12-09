@@ -68,7 +68,7 @@
 
                             echo "<div class='form-check'>";
                             echo "<input type='checkbox' class='form-check-input' name='mata_pelajaran[]' value='" . $mataPelajaran['id_mp'] . "' $checked>";
-                            echo "<label class='form-check-label'>" . $mataPelajaran['nama_mp'] . "</label>";
+                            echo "<label class='form-check-label' style='font-weight: normal; margin-left: 5px;'>" . $mataPelajaran['nama_mp'] . "</label>";
                             echo "</div>";
                         }
                     ?>
