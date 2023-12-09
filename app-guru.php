@@ -34,4 +34,19 @@
             header('Location: list-guru.php?status=gagal');
         }
     } 
+    else if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $deleteGuruMengajar = mysqli_query($db, "DELETE FROM guru_mengajar WHERE id_guru=$id");
+        $sql = "DELETE FROM guru WHERE id_guru=$id";
+        $query = mysqli_query($db, $sql);
+
+        if ($query) {
+            header('Location: list-guru.php');
+        } else {
+            die("Gagal menghapus...");
+        }
+    } 
+    else {
+        die("Akses Dilarang...");
+    }
 ?>

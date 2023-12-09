@@ -40,6 +40,9 @@
                             echo "<td>" . $guru['email'] . "</td>";
                             echo "<td>" . $guru['jenis_kelamin'] . "</td>";
                             echo "<td>" . $guru['mata_pelajaran'] . "</td>";
+                            echo "<td class='text-center'>";
+                            echo "<a class='btn btn-danger btn-xs' href='app-guru.php?id=" . $guru['id_guru'] . "'><span class='glyphicon glyphicon-remove'></span>Hapus</a>";
+                            echo "</td>";
                             echo "</tr>";
                         }
                     ?>
