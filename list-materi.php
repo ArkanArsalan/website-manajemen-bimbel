@@ -4,7 +4,7 @@ include("database.php");
 ?>
 
 <div class="list-guru-container">
-    <h1>List Materi Pelajaran</h1>
+    <h1>List Materi Course</h1>
 
     <div class="container" style="margin-top: 20px; margin-bottom: 40px; margin-right: 0; margin-left: 0; width: 100%">
         <!-- Display Table-->
@@ -37,8 +37,7 @@ include("database.php");
                             echo "<td>" . $materi['jenis_materi'] . "</td>";
                             echo "<td><a href='" . $materi['sumber_materi'] . "' target='_blank'>" . $materi['sumber_materi'] . "</a></td>";
                             echo "<td class='text-center'>";
-                            echo "<a class='btn btn-info btn-xs' href='edit-materi.php?id=" . $materi['id_materi'] . "' ><span class='glyphicon glyphicon-edit'></span>Edit</a> | ";
-                            echo "<a class='btn btn-danger btn-xs' href='app-materi.php?id=" . $materi['id_materi'] . "'><span class='glyphicon glyphicon-remove'></span>Hapus</a>";
+                            echo "<a class='btn btn-danger btn-xs' href='hapus-materi.php?id_course=" . $selectedSubjectId . "&id_materi=" . $materi['id_materi'] . "' onclick='return confirm(\"Are you sure you want to delete this material?\")'><span class='glyphicon glyphicon-remove'></span>Hapus</a>";
                             echo "</td>";
                             echo "</tr>";
                         }
@@ -48,10 +47,10 @@ include("database.php");
                     ?>
                 </tbody>
             </table>
-            <?php if (isset($_GET['subject'])): ?>
+            <?php if (isset($_GET['course'])): ?>
                 <p style="font-weight: bolder">Total : <?php echo mysqli_num_rows($filterQuery) ?></p>
                 <p style="text-align: right; margin:15px">
-                    <a href="tambah-materi.php" class="btn btn-primary btn-xs col-md-3">Tambah Baru</a>
+                    <a href="tambah-materi.php?id_course=<?php echo $selectedSubjectId; ?>" class="btn btn-primary btn-xs col-md-3">Tambah Baru</a>
                 </p>
             <?php endif; ?>
         </div>
