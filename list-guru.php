@@ -89,7 +89,7 @@
                             echo "<td>" . $guru['courses_taught'] . "</td>";
                             echo "<td class='text-center'>";
                             echo "<a class='btn btn-info btn-xs' href='edit-guru.php?id=" . $guru['id_guru'] . "' ><span class='glyphicon glyphicon-edit'></span>Edit</a> | ";
-                            echo "<a class='btn btn-danger btn-xs' href='app-guru.php?id=" . $guru['id_guru'] . "'><span class='glyphicon glyphicon-remove'></span>Hapus</a>";
+                            echo "<a class='btn btn-danger btn-xs' href='app-guru.php?id=" . $guru['id_guru'] . "' ' onclick='return confirm(\"Apakah anda yakin akan menghapus ini?\")'><span class='glyphicon glyphicon-remove'></span>Hapus</a>";
                             echo "</td>";
                             echo "</tr>";
                         }

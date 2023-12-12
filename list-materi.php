@@ -37,8 +37,7 @@ include("database.php");
                             echo "<td>" . $materi['jenis_materi'] . "</td>";
                             echo "<td><a href='" . $materi['sumber_materi'] . "' target='_blank'>" . $materi['sumber_materi'] . "</a></td>";
                             echo "<td class='text-center'>";
-                            echo "<a class='btn btn-danger btn-xs' href='hapus-materi.php?id_course=" . $selectedSubjectId . "&id_materi=" . $materi['id_materi'] . "' onclick='return confirm(\"Are you sure you want to delete this material?\")'><span class='glyphicon glyphicon-remove'></span>Hapus</a>";
-                            echo "</td>";
+                            echo "<a class='btn btn-danger btn-xs' href='hapus-materi.php?id_course=" . $selectedSubjectId . "&id_materi=" . $materi['id_materi'] . "' onclick='return confirm(\"Apakah anda yakin ingin menghapus ini?\")'><span class='glyphicon glyphicon-remove'></span>Hapus</a>";                            echo "</td>";
                             echo "</tr>";
                         }
                     } else {
