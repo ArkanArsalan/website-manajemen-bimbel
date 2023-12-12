@@ -11,8 +11,9 @@
         $jenjang_pendidikan = $_POST['jenjang_pendidikan'];
         $cabang_bimbel = $_POST['cabang_bimbel'];
         $id_course = $_POST['id_course'];
+        $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO siswa (nama, umur, alamat, no_telp, email, jenjang_pendidikan, jenis_kelamin, cabang_bimbel, id_course) VALUES ('$nama', '$umur' ,'$alamat', '$no_telp', '$email', '$jenjang_pendidikan', '$jenis_kelamin', '$cabang_bimbel', '$id_course')";        
+        $sql = "INSERT INTO siswa (nama, umur, alamat, no_telp, email, jenjang_pendidikan, jenis_kelamin, cabang_bimbel, id_course, password) VALUES ('$nama', '$umur' ,'$alamat', '$no_telp', '$email', '$jenjang_pendidikan', '$jenis_kelamin', '$cabang_bimbel', '$id_course', '$password')";        
         $query = mysqli_query($db, $sql);
 
         if ($query) {

@@ -82,7 +82,7 @@
                     <div class="card">
                         <img src="img/c.png" class="card-img-top" alt="Card Image 1" height="200px" width="75px">
                         <div class="card-body">
-                            <h5 class="card-title">Card Title 1</h5>
+                            <h5 class="card-title">C programming course</h5>
                             <a href="https://www.w3schools.com/c/c_intro.php" class="btn btn-primary">What is C?</a>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                     <div class="card">
                         <img src="img/java.png" class="card-img-top" alt="Card Image 2" height="200px" width="75px">
                         <div class="card-body">
-                            <h5 class="card-title">Card Title 2</h5>
+                            <h5 class="card-title">Java programming course</h5>
                             <a href="https://www.w3schools.com/java/java_intro.asp" class="btn btn-primary">What is java?</a>
                         </div>
                     </div>

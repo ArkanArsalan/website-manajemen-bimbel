@@ -5,7 +5,7 @@ include("database.php");
     <div class="form-container" id="daftar">
         <h1>Daftar</h1>
         <div class="container-fluid">
-            <form autocomplete="off" action="app-siswa.php" method="POST" enctype="multipart/form-data">
+            <form autocomplete="off" action="proses-registrasi.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nama">Nama</label>
                     <input type="text" name="nama" placeholder="Nama Lengkap Siswa" class="form-control" minlength="3" maxlength="40" required>
@@ -54,6 +54,10 @@ include("database.php");
                             echo "<input type='radio' name='id_course' value='" . $course['id_course'] . "'> " . $course['nama_course'] . "<br>";
                         }
                     ?>
+                </div>
+                <div class="form-group">
+                    <label for="password">password</label>
+                    <input type="password" name="password" placeholder="password" class="form-control" minlength="1" required>
                 </div>
                 <button name="daftar" type="submit" class="btn btn-primary">Daftar</button>
             </form>
