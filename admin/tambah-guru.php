@@ -31,8 +31,15 @@
                 <input type="email" name="email" placeholder="Email" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="cabang_bimbel">Cabang Bimbel</label>
-                <input type="text" name="cabang_bimbel" placeholder="Cabang Bimbel" class="form-control" required>
+                <label>Cabang Bimbel</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="cabang_bimbel" id="cabangA" value="Cabang A" required>
+                    <label class="form-check-label" for="cabangA" style="font-weight: normal; margin-left: 5px;">Cabang A</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="cabang_bimbel" id="cabangB" value="Cabang B" required>
+                    <label class="form-check-label" for="cabangB" style="font-weight: normal; margin-left: 5px;">Cabang B</label>
+                </div>
             </div>
             <div class="form-group">
                 <label for="course_id">Course yang Diajar</label>

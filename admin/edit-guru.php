@@ -52,10 +52,6 @@
                     <input type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $guru['email'] ?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="cabang_bimbel">Cabang Bimbel</label>
-                    <input type="text" name="cabang_bimbel" placeholder="Cabang Bimbel" class="form-control" value="<?php echo $guru['cabang_bimbel'] ?>" required>
-                </div>
-                <div class="form-group">
                     <label for="course">Mata Pelajaran yang Diajar</label>
                     <?php
                         $courseQuery = mysqli_query($db, "SELECT * FROM course");
