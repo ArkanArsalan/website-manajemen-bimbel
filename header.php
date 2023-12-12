@@ -21,7 +21,7 @@
         <li><a href="index.php">Home</a></li>
         <li><a href="list-siswa.php">List Siswa</a></li>
         <li><a href="list-guru.php">List Guru</a></li>
-        <li><a href="list-mata-pelajaran.php">Materi Pelajaran</a></li>
+        <li><a href="list-course.php">Materi Pelajaran</a></li>
       </ul>
       <button class="logout-btn">Logout</button>
     </div>

@@ -12,32 +12,30 @@ include("database.php");
             <table class="table table-striped custab">
                 <thead>
                     <tr>
-                        <th>ID Materi</th>
                         <th>Judul Materi</th>
                         <th>Jenis Materi</th>
-                        <th>Sumber Belajar</th>
+                        <th>Sumber Materi</th>
                         <th>Tindakan</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <?php
-                    if (isset($_GET['subject'])) {
-                        $selectedSubjectId = $_GET['subject'];
+                    if (isset($_GET['course'])) {
+                        $selectedSubjectId = $_GET['course'];
 
                         // Fetch and display details of learning materials for the selected subject
-                        $filterSql = "SELECT id_materi, judul, jenis_materi, sumber_belajar
-                                      FROM materi_pelajaran
-                                      WHERE id_mp = '$selectedSubjectId'";
+                        $filterSql = "SELECT id_materi, judul, jenis_materi, sumber_materi
+                                      FROM materi_course
+                                      WHERE id_course = '$selectedSubjectId'";
 
                         $filterQuery = mysqli_query($db, $filterSql);
 
                         while ($materi = mysqli_fetch_array($filterQuery)) {
                             echo "<tr>";
-                            echo "<td>" . $materi['id_materi'] . "</td>";
                             echo "<td>" . $materi['judul'] . "</td>";
                             echo "<td>" . $materi['jenis_materi'] . "</td>";
-                            echo "<td>" . $materi['sumber_belajar'] . "</td>";
+                            echo "<td><a href='" . $materi['sumber_materi'] . "' target='_blank'>" . $materi['sumber_materi'] . "</a></td>";
                             echo "<td class='text-center'>";
                             echo "<a class='btn btn-info btn-xs' href='edit-materi.php?id=" . $materi['id_materi'] . "' ><span class='glyphicon glyphicon-edit'></span>Edit</a> | ";
                             echo "<a class='btn btn-danger btn-xs' href='app-materi.php?id=" . $materi['id_materi'] . "'><span class='glyphicon glyphicon-remove'></span>Hapus</a>";
