@@ -20,9 +20,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#lokasi">Lokasi</a>
+            <a class="nav-item nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="#about">About</a>
+            <a class="nav-item nav-link" href="#course">Course</a>
             <a class="nav-item nav-link" href="register-siswa.php">Registrasi</a>
             <a class="nav-item nav-link btn btn-primary text-white tombol" href="login.php">LOGIN</a>
           </div>
@@ -61,25 +61,47 @@
         </div>
       </div>
 
-      <div class="row workingspace" id="Lokasi">
+      <div class="row workingspace" id="about">
         <div class="col-lg-6">
-          <img src="img/ACC.jpg" alt="Working Space" class="img-fluid">
+            <img src="img/ACC.jpg" alt="Working Space" class="img-fluid">
         </div>
         <div class="col-lg-5">
-          <h2>Ayo <span>Bergabung</span> Bersama <span>ACC</span></h2>
-          <p>Belajar dengan suasana hati yang lebih asik, menyenangkan
-            dan mempelajari hal baru setiap harinya.</p>
-          <a href="#" class="btn btn-danger tombol">Gallery</a>
+            <h2>Ayo <span>Bergabung</span> Bersama <span>ACC</span></h2>
+            <p>Menyambut Anda di Aktual Cendekia Course, tempat terbaik untuk mengembangkan diri dan meraih potensi terbaik Anda. Kami membuka pintu peluang bagi semua yang ingin mengejar keahlian dan pengetahuan baru.</p>
+            <p>Belajar di lingkungan yang inspiratif dan dinamis, Aktual Cendekia Course hadir dengan kurikulum berkualitas dan fasilitas terbaik. Dengan instruktur ahli di bidangnya, kami berkomitmen untuk memberikan pengalaman belajar yang menyenangkan dan bermakna.</p>
         </div>
-      </div>
+    </div>
 
-      <section class="testimonial">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <p>"Bekerja dengan suasana hati yang lebih asik dan mempelajari hal baru setiap harinya."</p>
-          </div>
+      <br><br>
+      <h2 id="course">Course</h2>
+      <section class="course mt-5" >
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Card 1 -->
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card">
+                        <img src="img/c.png" class="card-img-top" alt="Card Image 1" height="200px" width="75px">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title 1</h5>
+                            <a href="https://www.w3schools.com/c/c_intro.php" class="btn btn-primary">What is C?</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card">
+                        <img src="img/java.png" class="card-img-top" alt="Card Image 2" height="200px" width="75px">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title 2</h5>
+                            <a href="https://www.w3schools.com/java/java_intro.asp" class="btn btn-primary">What is java?</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-      </section>
+    </section>
 
     </div>
 

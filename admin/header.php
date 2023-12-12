@@ -24,6 +24,5 @@
         <li><a href="list-course.php">Materi Pelajaran</a></li>
         <li><a href="jadwal-bimbingan.php">Jadwal Bimbingan</a></li>
       </ul>
-      <button class="logout-btn">Logout</button>
     </div>
     <div class="content">

@@ -1,7 +1,6 @@
 <?php
     include("database.php");
 
-    // Check if the form is submitted
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -10,7 +9,7 @@
         $user = mysqli_fetch_assoc($query);
 
         if ($user && password_verify($password, $user['password'])) {
-            header('Location: index.php');
+            header('Location: list-materi.php?id=' . $user['id_siswa']);
             exit;
         } else {
             $error_message = 'Invalid email or password';
