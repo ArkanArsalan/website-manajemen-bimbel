@@ -101,3 +101,9 @@ body {
 .list-mata-pelajaran  .card-text {
     margin-bottom: 10px;
 }
+
+/* jadwal bimbingan */
+.jadwal-bimbingan-container {
+    display: flex;
+    flex-direction: column;
+}
