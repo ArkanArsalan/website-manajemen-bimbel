@@ -1,10 +1,23 @@
 <?php
 include_once("header.php");
 include("database.php");
+
+$selectedSubjectId = $_GET['course'];
+
+$courseNameQuery = mysqli_query($db, "SELECT nama_course FROM course WHERE id_course = '$selectedSubjectId'");
 ?>
 
 <div class="list-guru-container">
-    <h1>List Materi Course</h1>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a href="list-course.php" class="btn btn-secondary">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+        </a>        
+        <?php 
+            $course = mysqli_fetch_assoc($courseNameQuery);
+            $courseName = $course['nama_course'];
+            echo "<h1>List Materi Course - $courseName</h1>" 
+        ?>
+    </div>
 
     <div class="container" style="margin-top: 20px; margin-bottom: 40px; margin-right: 0; margin-left: 0; width: 100%">
         <!-- Display Table-->
