@@ -11,8 +11,8 @@ include("database.php");
             <?php
             $mataPelajaranQuery = mysqli_query($db, "SELECT * FROM mata_pelajaran");
             while ($subject = mysqli_fetch_assoc($mataPelajaranQuery)) {
-                echo "<div class='col-md-4 mb-4'>";
-                echo "<div class='card'>";
+                echo "<div class='col-md-3 mb-4'>";
+                echo "<div class='card text-center'>";
                 echo "<div class='card-body'>";
                 echo "<h5 class='card-title'>" . $subject['nama_mp'] . "</h5>";
                 echo "<p class='card-text'>Click to view materials</p>";
@@ -26,7 +26,7 @@ include("database.php");
     </div>
     <p style="font-weight : bolder">Total : <?php echo mysqli_num_rows($mataPelajaranQuery) ?></p>
     <p style="text-align: right; margin:15px">
-        <a href="tambah-mata-pelajaran.php" class="btn btn-primary btn-xs col-md-3">Tambah Mata Pelajaran</a>
+        <a href="tambah-mata-pelajaran.php" class="btn btn-primary btn-xs col-md-2">Tambah Mata Pelajaran</a>
     </p>
 </div>
 

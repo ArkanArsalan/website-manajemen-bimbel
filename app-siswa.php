@@ -8,11 +8,11 @@
         $no_telp = $_POST['no_telp'];
         $email = $_POST['email'];
         $jenis_kelamin = $_POST['jenis_kelamin'];
-        $jenjang_sekolah = $_POST['jenjang_sekolah'];
+        $jenjang_pendidikan = $_POST['jenjang_pendidikan'];
         $cabang_bimbel = $_POST['cabang_bimbel'];
-        $kelas = $_POST['kelas'];
+        $id_course = $_POST['id_course'];
 
-        $sql = "INSERT INTO siswa (nama, umur, alamat, no_telp, email, jenjang_sekolah, jenis_kelamin, cabang_bimbel, kelas) VALUES ('$nama', '$umur' ,'$alamat', '$no_telp', '$email', '$jenjang_sekolah', '$jenis_kelamin', '$cabang_bimbel', '$kelas')";
+        $sql = "INSERT INTO siswa (nama, umur, alamat, no_telp, email, jenjang_pendidikan, jenis_kelamin, cabang_bimbel, id_course) VALUES ('$nama', '$umur' ,'$alamat', '$no_telp', '$email', '$jenjang_pendidikan', '$jenis_kelamin', '$cabang_bimbel', '$id_course')";        
         $query = mysqli_query($db, $sql);
 
         if ($query) {
@@ -29,11 +29,9 @@
         $no_telp = $_POST['no_telp'];
         $email = $_POST['email'];
         $jenis_kelamin = $_POST['jenis_kelamin'];
-        $jenjang_sekolah = $_POST['jenjang_sekolah'];
-        $cabang_bimbel = $_POST['cabang_bimbel'];
-        $kelas = $_POST['kelas'];
+        $jenjang_pendidikan = $_POST['jenjang_pendidikan'];
 
-        $sql = "UPDATE siswa SET nama='$nama', umur=$umur, alamat='$alamat', no_telp='$no_telp', email='$email', jenis_kelamin='$jenis_kelamin', jenjang_sekolah='$jenjang_sekolah', cabang_bimbel='$cabang_bimbel', kelas='$kelas' WHERE id_siswa=$id";
+        $sql = "UPDATE siswa SET nama='$nama', umur=$umur, alamat='$alamat', no_telp='$no_telp', email='$email', jenis_kelamin='$jenis_kelamin', jenjang_pendidikan='$jenjang_pendidikan' WHERE id_siswa=$id";
         $query = mysqli_query($db, $sql);
 
         if ($query) {

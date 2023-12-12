@@ -7,7 +7,7 @@
 
     $id = $_GET['id'];
 
-    $sql = "SELECT * FROM siswa WHERE id_siswa=$id";
+    $sql = "SELECT * FROM siswa JOIN course ON siswa.id_course = course.id_course WHERE id_siswa=$id";
     $query = mysqli_query($db, $sql);
     $siswa = mysqli_fetch_assoc($query);
 
@@ -18,7 +18,7 @@
 
 <?php include_once("header.php")?>  
     <div class="form-container" id="daftar">
-        <h1>Daftar</h1>
+        <h1>Edit Data Siswa</h1>
         <div class="container-fluid">
             <form autocomplete="off" action="app-siswa.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="<?php echo $siswa['id_siswa'] ?>">
@@ -49,16 +49,8 @@
                     <input type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $siswa['email'] ?>">
                 </div>
                 <div class="form-group">
-                    <label for="jenjang_sekolah">Jenjang Sekolah</label>
-                    <input type="text" name="jenjang_sekolah" placeholder="Jenjang Sekolah" class="form-control" minlength="1" value="<?php echo $siswa['jenjang_sekolah'] ?>">
-                </div>
-                <div class="form-group">
-                    <label for="cabang_bimbel">Cabang Bimbel</label>
-                    <input type="text" name="cabang_bimbel" placeholder="Cabang Bimbel" class="form-control" value="<?php echo $siswa['cabang_bimbel'] ?>">
-                </div>
-                <div class="form-group">
-                    <label for="kelas">Kelas</label>
-                    <input type="text" name="kelas" placeholder="Kelas" class="form-control" value="<?php echo $siswa['kelas'] ?>">
+                    <label for="jenjang_pendidikan">Jenjang Pendidikan</label>
+                    <input type="text" name="jenjang_pendidikan" placeholder="Jenjang Pendidikan" class="form-control" minlength="1" value="<?php echo $siswa['jenjang_pendidikan'] ?>">
                 </div>
                 <button name="edit" type="submit" class="btn btn-primary">Submit</button>
             </form>

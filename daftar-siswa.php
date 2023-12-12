@@ -1,4 +1,7 @@
-<?php include_once("header.php")?>  
+<?php 
+include_once("header.php");
+include("database.php");
+?>  
     <div class="form-container" id="daftar">
         <h1>Daftar</h1>
         <div class="container-fluid">
@@ -29,16 +32,21 @@
                     <input type="email" name="email" placeholder="Email" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="jenjang_sekolah">Jenjang Sekolah</label>
-                    <input type="text" name="jenjang_sekolah" placeholder="Jenjang Sekolah" class="form-control" minlength="1" required>
+                    <label for="jenjang_pendidikan">Jenjang Pendidikan</label>
+                    <input type="text" name="jenjang_pendidikan" placeholder="Jenjang Pendidikan" class="form-control" minlength="1" required>
                 </div>
                 <div class="form-group">
                     <label for="cabang_bimbel">Cabang Bimbel</label>
                     <input type="text" name="cabang_bimbel" placeholder="Cabang Bimbel" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="kelas">Kelas</label>
-                    <input type="text" name="kelas" placeholder="Kelas" class="form-control">
+                    <label for="course">Course</label><br>
+                    <?php
+                        $courseQuery = mysqli_query($db, "SELECT * FROM course");
+                        while ($course = mysqli_fetch_assoc($courseQuery)) {
+                            echo "<input type='radio' name='id_course' value='" . $course['id_course'] . "'> " . $course['nama_course'] . "<br>";
+                        }
+                    ?>
                 </div>
                 <button name="daftar" type="submit" class="btn btn-primary">Daftar</button>
             </form>

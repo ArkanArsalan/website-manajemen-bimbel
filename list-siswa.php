@@ -21,25 +21,25 @@
                     </select>
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="kelas">Kelas</label>
-                    <select name="kelas" class="form-control">
-                        <option value="">-- Pilih Kelas --</option>
+                    <label for="course">Course</label>
+                    <select name="course" class="form-control">
+                        <option value="">-- Pilih Course --</option>
                         <?php
-                            $kelasQuery = mysqli_query($db, "SELECT DISTINCT kelas FROM siswa");
-                            while ($row = mysqli_fetch_assoc($kelasQuery)) {
-                                echo "<option value='" . $row['kelas'] . "'>" . $row['kelas'] . "</option>";
+                            $courseQuery = mysqli_query($db, "SELECT DISTINCT nama_course FROM course");
+                            while ($row = mysqli_fetch_assoc($courseQuery)) {
+                                echo "<option value='" . $row['nama_course'] . "'>" . $row['nama_course'] . "</option>";
                             }
                         ?>
                     </select>
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="jenjang">Jenjang Sekolah</label>
+                    <label for="jenjang">Jenjang Pendidikan</label>
                     <select name="jenjang" class="form-control">
                         <option value="">-- Pilih Jenjang --</option>
                         <?php
-                            $jenjangQuery = mysqli_query($db, "SELECT DISTINCT jenjang_sekolah FROM siswa");
+                            $jenjangQuery = mysqli_query($db, "SELECT DISTINCT jenjang_pendidikan FROM siswa");
                             while ($row = mysqli_fetch_assoc($jenjangQuery)) {
-                                echo "<option value='" . $row['jenjang_sekolah'] . "'>" . $row['jenjang_sekolah'] . "</option>";
+                                echo "<option value='" . $row['jenjang_pendidikan'] . "'>" . $row['jenjang_pendidikan'] . "</option>";
                             }
                         ?>
                     </select>
@@ -61,7 +61,7 @@
                         <th>Alamat</th>
                         <th>No telp</th>
                         <th>Email</th>
-                        <th>Jenjang Sekolah</th>
+                        <th>Jenjang Pendidikan</th>
                         <th>Cabang Bimbel</th>
                         <th>Kelas</th>
                         <th>Tindakan</th>
@@ -70,16 +70,16 @@
 
                 <tbody>
                     <?php
-                        $filterSql = "SELECT * FROM siswa WHERE 1";
+                        $filterSql = "SELECT * FROM siswa JOIN course ON siswa.id_course = course.id_course";
                         
                         if (isset($_POST['cabang']) && $_POST['cabang'] !== "") {
                             $filterSql .= " AND cabang_bimbel = '" . $_POST['cabang'] . "'";
                         }
-                        if (isset($_POST['kelas']) && $_POST['kelas'] !== "") {
-                            $filterSql .= " AND kelas = '" . $_POST['kelas'] . "'";
-                        }
+                        if (isset($_POST['course']) && $_POST['course'] !== "") {
+                            $filterSql .= " AND nama_course = '" . $_POST['course'] . "'";
+                        }                        
                         if (isset($_POST['jenjang']) && $_POST['jenjang'] !== "") {
-                            $filterSql .= " AND jenjang_sekolah = '" . $_POST['jenjang'] . "'";
+                            $filterSql .= " AND jenjang_pendidikan = '" . $_POST['jenjang'] . "'";
                         }
 
                         $filterQuery = mysqli_query($db, $filterSql);
@@ -92,9 +92,9 @@
                             echo "<td>" . $siswa['alamat'] . "</td>";
                             echo "<td>" . $siswa['no_telp'] . "</td>";
                             echo "<td>" . $siswa['email'] . "</td>";
-                            echo "<td>" . $siswa['jenjang_sekolah'] . "</td>";
+                            echo "<td>" . $siswa['jenjang_pendidikan'] . "</td>";
                             echo "<td>" . $siswa['cabang_bimbel'] . "</td>";
-                            echo "<td>" . $siswa['kelas'] . "</td>";
+                            echo "<td>" . $siswa['nama_course'] . "</td>";
                             echo "<td class='text-center'>";
                             echo "<a class='btn btn-info btn-xs' href='edit-siswa.php?id=" . $siswa['id_siswa'] . "' ><span class='glyphicon glyphicon-edit'></span>Edit</a> | ";
                             echo "<a class='btn btn-danger btn-xs' href='app-siswa.php?id=" . $siswa['id_siswa'] . "'><span class='glyphicon glyphicon-remove'></span>Hapus</a>";
