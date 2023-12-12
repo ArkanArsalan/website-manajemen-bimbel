@@ -35,13 +35,13 @@
                 <input type="text" name="cabang_bimbel" placeholder="Cabang Bimbel" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="mata_pelajaran">Mata Pelajaran yang Diajar</label>
+                <label for="course_id">Course yang Diajar</label>
                 <?php
-                    $mataPelajaranQuery = mysqli_query($db, "SELECT * FROM mata_pelajaran");
-                    while ($mataPelajaran = mysqli_fetch_assoc($mataPelajaranQuery)) {
+                    $courseQuery = mysqli_query($db, "SELECT * FROM course");
+                    while ($course = mysqli_fetch_assoc($courseQuery)) {
                         echo "<div class='form-check'>";
-                        echo "<input type='checkbox' class='form-check-input' name='mata_pelajaran[]' value='" . $mataPelajaran['id_mp'] . "'>";
-                        echo "<label class='form-check-label' style='font-weight: normal; margin-left: 5px;'>" . $mataPelajaran['nama_mp'] . "</label>";
+                        echo "<input type='checkbox' class='form-check-input' name='course_id[]' value='" . $course['id_course'] . "'>";
+                        echo "<label class='form-check-label' style='font-weight: normal; margin-left: 5px;'>" . $course['nama_course'] . "</label>";
                         echo "</div>";
                     }
                 ?>

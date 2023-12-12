@@ -56,13 +56,13 @@
                     <input type="text" name="cabang_bimbel" placeholder="Cabang Bimbel" class="form-control" value="<?php echo $guru['cabang_bimbel'] ?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="mata_pelajaran">Mata Pelajaran yang Diajar</label>
+                    <label for="course">Mata Pelajaran yang Diajar</label>
                     <?php
-                        $mataPelajaranQuery = mysqli_query($db, "SELECT * FROM mata_pelajaran");
-                        while ($mataPelajaran = mysqli_fetch_assoc($mataPelajaranQuery)) {
-                            // Check if the mata_pelajaran is assigned to the guru
+                        $courseQuery = mysqli_query($db, "SELECT * FROM course");
+                        while ($course = mysqli_fetch_assoc($courseQuery)) {
+                            // Check if the course is assigned to the guru
                             $isAssigned = false;
-                            $checkAssignmentQuery = mysqli_query($db, "SELECT * FROM guru_mengajar WHERE id_guru = {$guru['id_guru']} AND id_mp = {$mataPelajaran['id_mp']}");
+                            $checkAssignmentQuery = mysqli_query($db, "SELECT * FROM guru_mengajar WHERE id_guru = {$guru['id_guru']} AND id_course = {$course['id_course']}");
                             if (mysqli_num_rows($checkAssignmentQuery) > 0) {
                                 $isAssigned = true;
                             }
@@ -71,14 +71,12 @@
                             $checked = $isAssigned ? 'checked' : '';
 
                             echo "<div class='form-check'>";
-                            echo "<input type='checkbox' class='form-check-input' name='mata_pelajaran[]' value='" . $mataPelajaran['id_mp'] . "' $checked>";
-                            echo "<label class='form-check-label' style='font-weight: normal; margin-left: 5px;'>" . $mataPelajaran['nama_mp'] . "</label>";
+                            echo "<input type='checkbox' class='form-check-input' name='courses[]' value='" . $course['id_course'] . "' $checked>";
+                            echo "<label class='form-check-label' style='font-weight: normal; margin-left: 5px;'>" . $course['nama_course'] . "</label>";
                             echo "</div>";
                         }
                     ?>
                 </div>
-
-
                 <button name="edit" type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

@@ -21,16 +21,14 @@
                     </select>
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="mata_pelajaran">Mata Pelajaran</label>
-                    <select name="mata_pelajaran" class="form-control">
-                        <option value="">-- Pilih Mata Pelajaran --</option>
+                    <label for="course">Course</label>
+                    <select name="course" class="form-control">
+                        <option value="">-- Pilih Course --</option>
                         <?php
-                            $mataPelajaranQuery = mysqli_query($db, "SELECT DISTINCT mata_pelajaran.nama_mp FROM guru
-                                                                    LEFT JOIN guru_mengajar ON guru.id_guru = guru_mengajar.id_guru
-                                                                    LEFT JOIN mata_pelajaran ON guru_mengajar.id_mp = mata_pelajaran.id_mp");
-                            while ($row = mysqli_fetch_assoc($mataPelajaranQuery)) {
-                                echo "<option value='" . $row['nama_mp'] . "'>" . $row['nama_mp'] . "</option>";
-                            }
+                        $courseQuery = mysqli_query($db, "SELECT DISTINCT nama_course FROM course");
+                        while ($row = mysqli_fetch_assoc($courseQuery)) {
+                            echo "<option value='" . $row['nama_course'] . "'>" . $row['nama_course'] . "</option>";
+                        }
                         ?>
                     </select>
                 </div>
@@ -53,26 +51,25 @@
                         <th>Email</th>
                         <th>Jenis Kelamin</th>
                         <th>Cabang Bimbel</th>
-                        <th>Mata Pelajaran</th>
+                        <th>Course</th>
                         <th>Tindakan</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <?php
-                        // Fetch and display details of teachers and the subjects they teach
-                        $filterSql = "SELECT guru.id_guru, guru.nama, guru.umur, guru.alamat, guru.no_telp, guru.email, guru.jenis_kelamin, guru.cabang_bimbel, GROUP_CONCAT(mata_pelajaran.nama_mp SEPARATOR ', ') AS mata_pelajaran
-                                      FROM guru
-                                      LEFT JOIN guru_mengajar ON guru.id_guru = guru_mengajar.id_guru
-                                      LEFT JOIN mata_pelajaran ON guru_mengajar.id_mp = mata_pelajaran.id_mp
-                                      WHERE 1";
+                        $filterSql = "SELECT guru.id_guru, guru.nama, guru.umur, guru.alamat, guru.no_telp, guru.email, guru.jenis_kelamin, guru.cabang_bimbel, GROUP_CONCAT(course.nama_course SEPARATOR ', ') AS courses_taught
+                                    FROM guru
+                                    LEFT JOIN guru_mengajar ON guru.id_guru = guru_mengajar.id_guru
+                                    LEFT JOIN course ON guru_mengajar.id_course = course.id_course
+                                    WHERE 1";
 
                         if (isset($_POST['cabang']) && $_POST['cabang'] !== "") {
                             $filterSql .= " AND cabang_bimbel = '" . $_POST['cabang'] . "'";
                         }
 
-                        if (isset($_POST['mata_pelajaran']) && $_POST['mata_pelajaran'] !== "") {
-                            $filterSql .= " AND mata_pelajaran.nama_mp = '" . $_POST['mata_pelajaran'] . "'";
+                        if (isset($_POST['course']) && $_POST['course'] !== "") {
+                            $filterSql .= " AND course.nama_course = '" . $_POST['course'] . "'";
                         }
 
                         $filterSql .= " GROUP BY guru.id_guru";
@@ -89,7 +86,7 @@
                             echo "<td>" . $guru['email'] . "</td>";
                             echo "<td>" . $guru['jenis_kelamin'] . "</td>";
                             echo "<td>" . $guru['cabang_bimbel'] . "</td>";
-                            echo "<td>" . $guru['mata_pelajaran'] . "</td>";
+                            echo "<td>" . $guru['courses_taught'] . "</td>";
                             echo "<td class='text-center'>";
                             echo "<a class='btn btn-info btn-xs' href='edit-guru.php?id=" . $guru['id_guru'] . "' ><span class='glyphicon glyphicon-edit'></span>Edit</a> | ";
                             echo "<a class='btn btn-danger btn-xs' href='app-guru.php?id=" . $guru['id_guru'] . "'><span class='glyphicon glyphicon-remove'></span>Hapus</a>";
